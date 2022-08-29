@@ -44,7 +44,7 @@ To determine which state comprises largest fraction of genome:
 * For each state, find the sum of the lengths of all the genes in that state
 * Store sums as a column in a file with their corresponding states
 * Sort numerically by sums
-* use tail 1 to print the state with the largest sum
+* use tail -1 to print the state with the largest sum
 
 4. Number of samples in each pop of AFR:
 
@@ -68,3 +68,23 @@ To determine which state comprises largest fraction of genome:
  * Sort first by super population
  * Then sort by subpopulation as above
  * Use the uniq function to collapse the subpopulations and -c to get a count for how many samples are in each
+ 
+ 5. Explore SNP allele frequencies
+ 
+ to create the HG00100 file:
+ ```
+ cut -f 1-9,13 random_snippet.vcf > HG00100.vcf
+ ```
+
+ counts for 0|0, 0|1, 1|0, and 1|1 values:
+ ```
+ 9514 0|0
+  127 0|1
+  178 1|0
+  181 1|1
+  ```
+ 
+ code to find the counts:
+ ```
+ sort -k 10 HG00100.vcf | cut -f 10 | uniq -c | head -17 | tail -4
+ ```
