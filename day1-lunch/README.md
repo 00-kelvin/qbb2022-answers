@@ -88,3 +88,13 @@ To determine which state comprises largest fraction of genome:
  ```
  sort -k 10 HG00100.vcf | cut -f 10 | uniq -c | head -17 | tail -4
  ```
+ 
+34 rows contain AF=1 (used the following code:)
+```
+grep "AF=1" HG00100.vcf | wc -l
+      34
+```
+
+AF=1 can appear 6 times; 1 for the total pop and 5 for each of the superpops/continents (with superpop three-letter code and '_' preceding)
+
+To extract the AFR values, I would first cut the INFO column, then further cut that column with the delimiter changed to a semicolon, to extract the AFR_AF column from within the INFO column.
