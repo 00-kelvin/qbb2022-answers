@@ -13,18 +13,16 @@ $ echo $((13653/219))
 
 To find the median:
 
-<<<<<<< Local Changes
 a) Find the number of exons in each gene using the start/stop positions in the exon file compared to start/stop positions in the gene file  
 b) Store the exon counts in a new file  
 c) sort -n (sort the list of counts in numerical order)  
 d) use head 110 | tail 1 to print the 110th (middle) entry of the count list
   
-=======
+
 * Find the number of exons in each gene using the start/stop positions in the exon file compared to start/stop positions in the gene file  
 * Store the exon counts in a new file  
 * sort -n (sort the list of counts in numerical order)  
 * use head 110 | tail 1 to print the 110th (middle) entry of the count list  
->>>>>>> External Changes
 3. Regions classified for each state: 
 ```
  305 chr21	1
@@ -55,6 +53,8 @@ To determine which state comprises largest fraction of genome:
 * use tail 1 to print the state with the largest sum
 
 4. Number of samples in each pop of AFR:
+
+```
  123 HG01880	ACB	AFR
  112 NA19625	ASW	AFR
  173 HG02922	ESN	AFR
@@ -62,6 +62,9 @@ To determine which state comprises largest fraction of genome:
  122 NA19017	LWK	AFR
  128 HG03052	MSL	AFR
  206 NA18484	YRI	AFR
+ ```
+ 
+ commands used: 
  
  ```
  grep "AFR" integrated_call_samples.panel | sort -k 2 | cut -f -3 | uniq -cf 1
