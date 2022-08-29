@@ -37,7 +37,7 @@ To find the median:
 ```
 command used: 
 ```
-sort -nk 4 chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed | uniq -f 3 -c | cut -f 1,4
+$ sort -nk 4 chromHMM.E116_15_coreMarks_hg38lift_stateno.chr21.bed | uniq -f 3 -c | cut -f 1,4
 ```
 
 To determine which state comprises largest fraction of genome:
@@ -61,7 +61,7 @@ To determine which state comprises largest fraction of genome:
  commands used: 
  
  ```
- grep "AFR" integrated_call_samples.panel | sort -k 2 | cut -f -3 | uniq -cf 1
+ $ grep "AFR" integrated_call_samples.panel | sort -k 2 | cut -f -3 | uniq -cf 1
  ```
  
  For all 5 populations: 
@@ -73,7 +73,7 @@ To determine which state comprises largest fraction of genome:
  
  to create the HG00100 file:
  ```
- cut -f 1-9,13 random_snippet.vcf > HG00100.vcf
+ $ cut -f 1-9,13 random_snippet.vcf > HG00100.vcf
  ```
 
  counts for 0|0, 0|1, 1|0, and 1|1 values:
@@ -84,7 +84,7 @@ To determine which state comprises largest fraction of genome:
   181 1|1
   ```
  
- code to find the counts:
+ command to find the counts:
  ```
- sort -k 10 HG00100.vcf | cut -f 10 | uniq -c | head -17 | tail -4
+ $ sort -k 10 HG00100.vcf | cut -f 10 | uniq -c | head -17 | tail -4
  ```
