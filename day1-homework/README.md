@@ -61,5 +61,36 @@ Considering  T
    4 G
   24 T
  ```
- These results are very low numbers of SNPs in this region. One hypothesis might be that this area is highly conserved because of its importance in initiating transcription.
+ These results are very low numbers of variants in this region. One hypothesis might be that this area is highly conserved because of its importance in initiating transcription.
+ 
+ **Exercise 3**
+ 
+ Line 5 (the awk statement) creates a new bed file from the input VCF with 3 columns: the chromosome (chr21), the position minus 1, and the position of the variant. This is because the closest function requires bed file inputs, and bed files need a start and stop position (variants only have 1 position so pos-1, pos is a good approximation).
+ 
+ Line 6 sorts the genes.bed file first by chromosome, then numerically by the starting position and saves it as a new file called 'genes.sorted.bed'. This is necessary because according to the bedtools documentation, "bedtools closest requires that all input files are presorted data by chromosome and then by start position".
+ 
+ Line 7 feeds the new variants file and the sorted genes file into the bedtools closest function.
+ 
+ The first error is Error: unable to open file or unable to determine types for file variants.bed. it suggests: - Please ensure that your file is TAB delimited (e.g., cat -t FILE).
+ 
+ I changed the awk statement to make the output tab-delimited:
+ 
+ ```
+ awk '/^#/{next} BEGIN{OFS="\t"} {print $1,$2-1, $2}' $1 > variants.bed
+ ```
+ The second error was Error: Sorted input specified, but the file variants.bed has the following out of order record
+ 
+ I added a line to sort the variants.bed file and save it as a new file, variants.sorted.bed which I then fed into the bedtools closest function.
+ 
+ There are 10293 variants returned: 
+ ```
+ bash exercise3.sh ~/data/vcf_files/random_snippet.vcf | wc -l
+    10293
+ ```
+ Used the following command to pull out the gene names, collapse to unique values, then count the number of unique genes, of which there are 200: 
+ ```
+ bash exercise3.sh ~/data/vcf_files/random_snippet.vcf | awk '{print $7}' | sort | uniq | wc -l 
+      200
+ ```
+ On average, 10293/200 = ~51 variants are connected to each gene.
  
