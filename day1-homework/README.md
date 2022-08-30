@@ -63,6 +63,13 @@ Considering  T
  ```
  These results are very low numbers of variants in this region. One hypothesis might be that this area is highly conserved because of its importance in initiating transcription.
  
+ # EXERCISE 2
+ # The point of the first part was that bioinformatic analysis requires making (potentially arbitrary) decisions
+ # A lot of ppl chose more than one state: for promo in 1 2 10 11: then used a loop with awk
+ # Append to a file using >> (so that the final file wouldn't just have 11s)
+ # Or could do awk '{ if( $4 == 1 || $4 == 2 || $4 == 10 || $4 == 11 ) print }'
+ # Had to put the vcf file in as 'a' because we need information about all the variants, not just the genes
+ 
  **Exercise 3**
  
  Line 5 (the awk statement) creates a new bed file from the input VCF with 3 columns: the chromosome (chr21), the position minus 1, and the position of the variant. This is because the closest function requires bed file inputs, and bed files need a start and stop position (variants only have 1 position so pos-1, pos is a good approximation).
