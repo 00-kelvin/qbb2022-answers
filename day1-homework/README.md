@@ -63,11 +63,12 @@ Considering  T
  ```
  These results are very low numbers of variants in this region. One hypothesis might be that this area is highly conserved because of its importance in initiating transcription.
  
-[//]: <> The point of the first part was that bioinformatic analysis requires making (potentially arbitrary) decisions
-[//]: <> A lot of ppl chose more than one state: for promo in 1 2 10 11: then used a loop with awk
-[//]: <> Append to a file using >> (so that the final file wouldn't just have 11s)
-[//]: <> Or could do awk '{ if( $4 == 1 || $4 == 2 || $4 == 10 || $4 == 11 ) print }'
-[//]: <> Had to put the vcf file in as 'a' because we need information about all the variants, not just the genes
+ *Notes to self from small group discussion: 
+ The point of the first part was that bioinformatic analysis requires making (potentially arbitrary) decisions
+A lot of ppl chose more than one state: for promo in 1 2 10 11: then used a loop with awk
+Append to a file using >> (so that the final file wouldn't just have 11s)
+Or could do awk '{ if( $4 == 1 || $4 == 2 || $4 == 10 || $4 == 11 ) print }'
+Had to put the vcf file in as 'a' because we need information about all the variants, not just the genes*
  
  **Exercise 3**
  
