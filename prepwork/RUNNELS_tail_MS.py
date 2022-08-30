@@ -22,3 +22,10 @@ for line in tail: #FOR every line in the subset
 # can help make it more readble. Second, putting longer comments on lines of 
 # their own will also help with readability. As far as the logic goes, you're
 # spot on. Great job! - Mike
+
+# Notes from small group discussion:
+# Can use .reverse to reverse the order of a list
+# Can use list[-n_lines:] to start from n_lines from the end
+# Could have done some "defensive programming" -- check if the inputs are valid
+
+
