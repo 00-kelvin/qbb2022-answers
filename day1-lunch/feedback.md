@@ -1,0 +1,1 @@
+Great job! Your record of your commands and your written-out answers are all clear and comprehensive. I especially like the bullet points because it makes things very readable - this might have been the most aesthetically pleasing day1-lunch I've seen. Keep up the good work.
