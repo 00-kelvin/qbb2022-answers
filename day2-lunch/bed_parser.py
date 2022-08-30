@@ -63,8 +63,9 @@ def parse_bed(fname):
             # increment malformed if any of the above failed
             malformed += 1
 
-    # print count of malformed lines
-    print(f"{malformed} lines are malformed", file=sys.stderr)
+    # print count of malformed lines if nonzero
+    if malformed > 0:
+        print(f"{malformed} lines are malformed", file=sys.stderr)
     fs.close()
     return bed
 
