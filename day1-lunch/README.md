@@ -97,4 +97,4 @@ grep "AF=1" HG00100.vcf | wc -l
 
 AF=1 can appear 6 times; 1 for the total pop and 5 for each of the superpops/continents (with superpop three-letter code and '_' preceding)
 
-To extract the AFR values, I would first cut the INFO column, then further cut that column with the delimiter changed to a semicolon, to extract the AFR_AF column from within the INFO column.
+To extract the AFR values, I would first cut the INFO column, then further cut that column with the cut function's delimiter changed to a semicolon (cut -d';'). the AFR_AF column would be the 7th column from within the INFO column.
