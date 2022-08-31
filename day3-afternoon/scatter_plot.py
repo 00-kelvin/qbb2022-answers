@@ -18,5 +18,6 @@ ax[0].legend()
 ax[1].legend()
 plt.savefig("lineplot.png")
 
+
 #need to do this if you want to save another figure
 plt.close(fig)
