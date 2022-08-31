@@ -32,3 +32,5 @@ ax.set_ylabel("PC3")
 # save figure
 plt.savefig("ex2_b.png")
 
+
+
