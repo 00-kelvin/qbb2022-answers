@@ -29,5 +29,11 @@ for i in range(len(random)):
 	except:
 		noID += 1
 
+#print non-matching record count
 print(f"There are {noID} records that do not have a corresponding ID in dbSNP")
+
+#print first 100 lines (first 80 characters)
+print("The first 100 records in random_snippet (80 character limit):")
+for record in random[:100]: 
+	print(str(record)[:80])
 
