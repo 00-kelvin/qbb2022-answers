@@ -165,13 +165,13 @@ def parse_vcf(fname):
             except:
                 malformed += 1
 
-    #replace the 7th index in the #CHROM line with info_description dict 
+    #replace the INFO header in the #CHROM line with info_description dict 
     vcf[0][7] = info_description
 
     #if the length of the first line is > 8 (there is genotype info)
     if len(vcf[0]) > 8:
 
-        #set the 8th field in the #CHROM line to format_description dict
+        #set the FORMAT header in the #CHROM line to format_description dict
         vcf[0][8] = format_description
 
     #if some of the lines were malformed, print how many to the standard error
@@ -185,5 +185,7 @@ def parse_vcf(fname):
 if __name__ == "__main__":
     fname = sys.argv[1]
     vcf = parse_vcf(fname)
+
+    #then prints the first 10 lines of the formatted list
     for i in range(10):
         print(vcf[i])
