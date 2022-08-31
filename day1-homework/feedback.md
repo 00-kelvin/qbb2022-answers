@@ -1,0 +1,1 @@
+Great work! All your solutions are complete and written clearly. I really like the extent to which you've written out your thought process for each of the questions - it's very easy to follow your logic and I'm sure future Kelvin will thank you if you ever have to reuse any of this code.
