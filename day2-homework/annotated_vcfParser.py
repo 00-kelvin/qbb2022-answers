@@ -86,8 +86,10 @@ def parse_vcf(fname):
                     vcf.append(fields)
             except:
                 raise RuntimeError("Malformed header")
+
         #now looking at the actual variant lines
         else:
+            
             #making sure the variants are properly formatted
             try:
                 
