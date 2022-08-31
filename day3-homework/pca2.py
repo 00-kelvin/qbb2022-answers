@@ -110,7 +110,7 @@ for sex in sex_list:
 	ax.set_ylabel("PC2")
 	ax.legend()
 
-# make my second plot
+# make my last plot
 plt.title("PCA of 1000 Genome Project Variants by Sex")
 plt.tight_layout()
 plt.savefig("ex3_c.png")
