@@ -23,3 +23,8 @@ Three other gene_types present in the GENCODE .gtf that you find interesting and
 * transcribed_unprocessed\_pseudogene: these are pseudogenes that have not been moved away from their parent gene, but are still transcribed, which means maybe they are used for something. interesting because generally pseudogenes are only transcribed if they are processed?
 * miRNA: non-coding regulatory RNAs. maybe interesting to compare to the parts of the genome that they interact with 
 * lncRNA: always interesting because we don't know what a lot of them do
+
+**Exercise 2**
+
+* The protein coding, random snippet, and lncRNA allele counts have similar frequency distributions, with a peak at the lowest allele counts and a relatively uniform but decreasing distribution towards higher allele counts.
+* Both the exons and processed pseudogene distributions are more segmented, each with two peaks in the higher allele count regions but otherwise clustered around lower allele counts.
