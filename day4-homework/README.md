@@ -14,3 +14,7 @@ probs = numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1]
 [1.   0.95 0.9  0.85 0.8  0.75 0.7  0.65 0.6  0.55]
 ```
 
+**Part C**
+
+* In both the corrected and uncorrected charts, power increases with increasing probability (further away from the expected probability of 0.5) and with increasing number of tosses.
+* In the corrected chart, an even greater number of tosses and greater difference between the expected and observed probabilities are needed for the test to have a higher power score.

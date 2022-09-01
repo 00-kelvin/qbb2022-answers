@@ -103,9 +103,31 @@ def run_experiment(n_iters = 100, seed = 389, correct_the_pvalues = False):
             # 2d array
             results_2d_arr[i,j] = power
 
-    return(results_2d_arr)
+    # start my figure
+    fig, ax = plt.subplots()
 
-print(run_experiment())
+    # set up my heatmap
+    sns.heatmap(results_2d_arr, ax=ax, vmin=0, vmax=1, cmap="rocket_r", 
+                xticklabels=tosses, yticklabels=probabilities, 
+                cbar_kws={"label": "Power"})
 
+    # set axis labels
+    ax.set_xlabel("Number of tosses")
+    ax.set_ylabel("Probability")
 
-print(numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1])
+    # set title
+    plt.title("Power of binomial test by number of tosses and probability")
+
+    # creating string variable to change the file name depending on whether
+    # p-values are corrected or not
+    corrected = ""
+    if correct_the_pvalues:
+        corrected += "_corrected"
+
+    # save the figure(s)
+    plt.savefig("power_heatmap" + corrected + ".png")
+
+run_experiment()
+run_experiment(correct_the_pvalues = True)
+
+#print(numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1])
