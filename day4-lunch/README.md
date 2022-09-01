@@ -32,24 +32,110 @@ Three other gene_types present in the GENCODE .gtf that you find interesting and
 **Exercise 3** 
 
 ```
-**SYNOPSIS**
+SYNOPSIS
      bxlab/cmdb-plot-vcfs -- ...
 
-**USAGE**
+USAGE
      bash do_all.sh <file1> <file2> 
-	 <file1>   vcf file containing SNPs to process
-	 <file2>   gtf file containing annotations of gene type
+		 	<file1>   .vcf file containing SNPs to process
+	 		<file2>   .gtf file containing annotations of gene type
+     bash subset_regions.sh <file1>
+	 		<file1>   .gtf file containing annotations of gene type
+     python plot_vcf_ac.py <file1>
+	 		<file1>   intersected .vcf file of SNPs with bed file of features of interest
 
- DESCRIPTION
- 
-   1. Create .bed files for features of interest
-         - Run subset_regions.sh Bash script
-         - Use grep to subset the GTF file to only chromosome 21
-		 - Use grep and awk to locate gene types protein_coding, processed_pseudogene, 
-			 and lncRNA and create a bed file with their chromosome number and start/
-			 stop positions (formatted to bed conventions)
-		 - Use grep and awk to locate all exons and create a bed file with their 
-		 	chromosome number and start/stop positions (formatted to bed conventions)
-	 2.  asdf
-	 
+DESCRIPTION
+	1. Create .bed files for features of interest
+		- Run subset_regions.sh Bash script
+		- Use grep to subset the GTF file to only chromosome 21
+		- Use grep and awk to locate gene types protein_coding, processed_pseudogene, and lncRNA and create a bed file with their chromosome number and start/stop positions (formatted to bed conventions)
+		- Use grep and awk to locate all exons and create a bed file with their chromosome number and start/stop positions (formatted to bed conventions)
+	 2. Subset .vcf for each feature
+	 	- Use bedtools merge to combine all the features within each bed file and compute a total bp count for that feature
+		- Use bedtools intersect to write a vcf file containing the intersections between the user-inputted vcf and each of the generated bed files for features of interest
+	 3. Plot AC for each .vcf
+	 	- Run plot_vcf_ac.py Python script for each type vcf
+		- Use a for loop to generate a list of allele counts for each SNP in the intersected vcf file
+		- Format histogram scale, density, limits, labels, and title
+		- Save figures
+
+DEPENDENCIES
+	 # Name                    Version    
+	 bedtools                  2.30.0     
+	 blas                      1.0        
+	 brotli                    1.0.9      
+	 bzip2                     1.0.8      
+	 ca-certificates           2022.4.26  
+	 certifi                   2022.6.15  
+	 cycler                    0.11.0     
+	 fonttools                 4.25.0     
+	 freetype                  2.11.0     
+	 giflib                    5.2.1      
+	 intel-openmp              2021.4.0   
+	 jpeg                      9e         
+	 kiwisolver                1.4.2      
+	 lcms2                     2.12       
+	 libcxx                    14.0.6     
+	 rge
+	 libffi                    3.3        
+	 libpng                    1.6.37     
+	 libtiff                   4.2.0      
+	 libwebp                   1.2.2      
+	 libwebp-base              1.2.2      
+	 libzlib                   1.2.12     
+	 rge
+	 lz4-c                     1.9.3      
+	 matplotlib                3.5.1      
+	 matplotlib-base           3.5.1      
+	 mkl                       2021.4.0   
+	 mkl-service               2.4.0      
+	 mkl_fft                   1.3.1      
+	 mkl_random                1.2.2      
+	 munkres                   1.1.4      
+	 ncurses                   6.3        
+	 numpy                     1.22.3     
+	 numpy-base                1.22.3     
+	 openssl                   1.1.1o     
+	 packaging                 21.3       
+	 pillow                    9.0.1      
+	 pip                       21.2.4     
+	 pyparsing                 3.0.4      
+	 python                    3.10.4     
+	 python-dateutil           2.8.2      
+	 readline                  8.1.2      
+	 setuptools                61.2.0     
+	 six                       1.16.0     
+	 sqlite                    3.38.5     
+	 tk                        8.6.12     
+	 tornado                   6.1        
+	 tzdata                    2022a      
+	 wheel                     0.37.1     
+	 xz                        5.2.5      
+	 zlib                      1.2.12     
+	 zstd                      1.5.2
+	 	 
+OUTPUT
+*** Creating .bed files for features of interest
+--- Creating protein_coding.chr21.bed
+--- Creating processed_pseudogene.chr21.bed
+--- Creating lncRNA.chr21.bed
+--- Creating exons.chr21.bed
+*** Subsetting .vcf for each feature
+--- Subsetting exons.chr21.bed.vcf
+    + Covering 1107407 bp
+--- Subsetting lncRNA.chr21.bed.vcf
+    + Covering 8663528 bp
+--- Subsetting processed_pseudogene.chr21.bed.vcf
+    + Covering 956640 bp
+--- Subsetting protein_coding.chr21.bed.vcf
+    + Covering 13780687 bp
+*** Plotting AC for each .vcf
+--- Plotting AC for exons.chr21.bed.vcf
+--- Plotting AC for lncRNA.chr21.bed.vcf
+--- Plotting AC for processed_pseudogene.chr21.bed.vcf
+--- Plotting AC for protein_coding.chr21.bed.vcf
+--- Plotting AC for random_snippet.vcf
+
+Saves 5 .png files to working directory
+
 ```
