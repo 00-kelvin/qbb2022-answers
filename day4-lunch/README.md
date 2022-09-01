@@ -28,3 +28,25 @@ Three other gene_types present in the GENCODE .gtf that you find interesting and
 
 * The protein coding, random snippet, and lncRNA allele counts have similar frequency distributions, with a peak at the lowest allele counts and a relatively uniform but decreasing distribution towards higher allele counts.
 * Both the exons and processed pseudogene distributions are more segmented, each with two peaks in the higher allele count regions but otherwise clustered around lower allele counts.
+
+**Exercise 3** 
+
+**SYNOPSIS**
+     bxlab/cmdb-plot-vcfs -- ...
+
+**USAGE**
+     bash do_all.sh <file1> <file2>
+
+     <file1>   vcf file containing SNPs to process
+	 <file2>   gtf file containing annotations of gene type
+
+ DESCRIPTION
+     1. Create .bed files for features of interest
+         - Run subset_regions.sh Bash script
+         - Use grep to subset the GTF file to only chromosome 21
+		 - Use grep and awk to locate gene types protein_coding, processed_pseudogene, 
+			 and lncRNA and create a bed file with their chromosome number and start/
+			 stop positions (formatted to bed conventions)
+		 - Use grep and awk to locate all exons and create a bed file with their 
+		 	chromosome number and start/stop positions (formatted to bed conventions)
+	 2.  
