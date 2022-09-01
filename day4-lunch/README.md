@@ -41,6 +41,7 @@ Three other gene_types present in the GENCODE .gtf that you find interesting and
 	 <file2>   gtf file containing annotations of gene type
 
  DESCRIPTION
+ 
      1. Create .bed files for features of interest
          - Run subset_regions.sh Bash script
          - Use grep to subset the GTF file to only chromosome 21
