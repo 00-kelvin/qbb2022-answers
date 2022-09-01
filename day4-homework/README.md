@@ -1,4 +1,4 @@
-#QBB2022 - Day 4 - Homework Exercises Submission
+# QBB2022 - Day 4 - Homework Exercises Submission
 
 **Part A**
 
@@ -18,3 +18,13 @@ probs = numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1]
 
 * In both the corrected and uncorrected charts, power increases with increasing probability (further away from the expected probability of 0.5) and with increasing number of tosses.
 * In the corrected chart, an even greater number of tosses and greater difference between the expected and observed probabilities are needed for the test to have a higher power score.
+
+**Part D**
+
+* This study is focused on the biological phenomenon of transmission distortion, which is when a diploid, heterozygous organism passes on its alleles to offspring in proportions other than the expected 50% as predicted by Mendel's Law of Segregation (or, described another way, the organism produces unequal numbers of gametes possessing each of the two alleles).
+* Comparison between my simulation and the paper: 
+	- "Probability" in my paper is analagous to "Transmission rate" in the paper, as both refer to the phenomenon which is tested deviating from the expected 0.5 probability. In both cases, the power of the test increses as probability/transmission rate deviates further from the expected value of 0.5.
+	- Number of tosses and number of sperm are also analogs, referring to the number of "trials" or "test subjects"; again, in both cases, increasing the number increases the power of the statistical test.
+	- n_iters in my simulation corresponds to the "1000 independent simulations" run in the study to compute the power for each study design
+	- One notable difference is that in my simulation, multiple testing correction decreased power of the tests more dramatically for low-toss number tests regardless of probability, whereas in the study, low-transmission rate studies were more sensitive to losing power when subjected to multiple testing correction.
+	- Both simulations use a binomial test because the aim is to test the statistical significance of a deviation from the expected binomial distribution of observations that can take two values: heads vs. tails, or allele 1 vs. allele 2.
