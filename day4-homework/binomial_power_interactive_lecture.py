@@ -115,17 +115,23 @@ def run_experiment(n_iters = 100, seed = 389, correct_the_pvalues = False):
     ax.set_xlabel("Number of tosses")
     ax.set_ylabel("Probability")
 
+    filename_corrected = ""
+    title_corrected = "out"
+    if correct_the_pvalues:
+        filename_corrected += "_corrected"
+        title_corrected = ""
+
     # set title
-    plt.title("Power of binomial test by number of tosses and probability")
+    plt.suptitle("Power of binomial test by number of tosses and probability")
+    plt.title("with" + title_corrected + 
+                " multiple hypothesis testing correction")
 
     # creating string variable to change the file name depending on whether
     # p-values are corrected or not
-    corrected = ""
-    if correct_the_pvalues:
-        corrected += "_corrected"
+
 
     # save the figure(s)
-    plt.savefig("power_heatmap" + corrected + ".png")
+    plt.savefig("power_heatmap" + filename_corrected + ".png")
 
 run_experiment()
 run_experiment(correct_the_pvalues = True)
