@@ -1,0 +1,3 @@
+# Feedback day3-homework
+
+Overall this looks good. You plotting code looks good and your plots look correct. While not required, it is nice if you include the commands you ran on the command line to do these data manipulations. Think of it as showing your work. Also, while your code worked just fine, there is an easier way to get the unique set of labels for the metadata. Since your data was in a numpy array, you could use `np.unique`. The command gets you a sorted array of unique values from an unsorted numpy array. `sex = np.unique(joined['sex'])` But all in all, well done. Keep it up!
