@@ -16,4 +16,10 @@ There definitely is some structure among the points in both plots: both plots sh
 
 **Exercise 3**
 
+To join the files: 
+
+```
+join -1 1 -2 1 <(sort /Users/cmdb/data/metadata_and_txt_files/integrated_call_samples.panel) <(sort plink.eigenvec) > joined.txt
+```
+
 What a doozy! My script for these plots is called "pca2.py" and the plots themselves are "ex3_a-c.png"
