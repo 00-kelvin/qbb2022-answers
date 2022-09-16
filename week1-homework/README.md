@@ -22,7 +22,7 @@ In the 15x coverage simulation, 3 bp were not sequenced. The Poisson expectation
 
 ### Question 2: De novo assembly
 
-The bash script I wrote to find these answers is saved as exercise2.sh; it works when saved in the same directory as the fasta files (`~/qbb2022-answers/week1-homework/asm/asm`) and produces the following output: 
+The bash script I wrote to find these answers is saved in /asm/asm/exercise2.sh; it worked when saved in the same directory as the fasta files (`~/qbb2022-answers/week1-homework/asm/asm`) and produced the following output: 
 
 ```
 Question 2.1:
@@ -55,5 +55,70 @@ Since the total length is 234467, 50% of the genome is 117233.5 bp. The contigs 
 39426
 ```
 The first contig does not contain 50% of the genome, but the first 2 do (together they contain 153690 bp). Therefore, the N50 value is 47860.
+
+### Question 3: De novo assembly
+
+#### Question 3.1
+
+I ran: `$ dnadiff ./asm/ref.fa ./asm/asm/contigs.fasta`
+
+According to the out.report, the average identity of my assembly compared to the reference was 100.00
+
+#### Question 3.2
+
+The output of
+
+`$ nucmer ./asm/ref.fa ./asm/asm/contigs.fasta`
+`$ show-coords out.delta`
+
+was
+
+    [S1]     [E1]  |     [S2]     [E2]  |  [LEN 1]  [LEN 2]  |  [% IDY]  | [TAGS]
+=====================================================================================
+  127965   233794  |        1   105830  |   105830   105830  |    99.99  | Halomonas	NODE_1_length_105830_cov_20.649193
+   40651    88510  |        1    47860  |    47860    47860  |   100.00  | Halomonas	NODE_2_length_47860_cov_20.367392
+       3    26789  |        1    26787  |    26787    26787  |   100.00  | Halomonas	NODE_3_length_41351_cov_20.528098
+   26790    40641  |    27500    41351  |    13852    13852  |   100.00  | Halomonas	NODE_3_length_41351_cov_20.528098
+   88532   127957  |        1    39426  |    39426    39426  |   100.00  | Halomonas	NODE_4_length_39426_cov_20.336388
+
+It appears that the length of the longest alignment was 105830.
+
+#### Question 3.3
+
+From the out.report, there is 1 insertion of length 712 and 5 deletions of total length 51.
+
+### Question 4: Decoding the insertion
+
+#### Question 4.1
+
+The insertion begins at position 26788 in Node 3 of the assembly. This corresponds to position 26790 in the reference.
+
+#### Question 4.2
+
+The insertion is 712 bp long.
+
+#### Question 4.3
+
+`samtools faidx contigs.fasta NODE_3_length_41351_cov_20.528098:26788-27500` gives the following result: 
+
+>NODE_3_length_41351_cov_20.528098:26788-27500
+CGCCCATGCGTAGGGGCTTCTTTAATTACTTGATTGACGCATGCCCCTCGTTCTACATGT
+CTAGCTTCGTAACTGCCCCGATTTATACAGGAGCATATGCGTTTCGTAGTGCCGGGAATG
+CATACCAAAGGGCTCACGGCGGGTACGCCACAATGGCTCAAGTCGAAAATGAATCGAAGA
+CAACAAGGAATACCGTACCCAATTACTCAAGGACCTCATACACCATCCCATGCTACTTAT
+CTACAGACATACACGCCAGCACCCAGCAACCAAAGCACACCGACGATAAGACTACAATCG
+CGATAAGCACAACTTACATTAGGAGGCCCGGCAAATCTTGACGGCGTTAAGTCCGACACG
+AATACCCCCCGACAAAAGCCTCGTATTCCGAGAGTACGAGAGTGCACAAAGCACCAAGGC
+GGGGCTTCGGTACATCCACCAGTAGTCCCGTCGTGGCGGATTTTCGTCGCGGATGATCCG
+AGGATTTCCTGCCTTGCCGAACACCTTACGTCATTCGGGGATGTCATAAAGCCAAACTTA
+GGCAAGTAGAAGATGGAGCACGGTCTAAAGGATTAAAGTCCTCGAATAACAAAGGACTGG
+AGTGCCTCAGGCATCTCTGCCGATCTGATTGCAAGAAAAAATGACAATATTAGTAAATTA
+GCCTATGAATAGCGGCTTTAAGTTAATGCCGAGGTCAATATTGACATCGGTAG
+
+#### Question 4.4
+
+I saved the above sequence to a fasta file: `samtools faidx contigs.fasta NODE_3_length_41351_cov_20.528098:26788-27500 > insertion.fasta` then ran `python ../dna-decode.py --decode --input insertion.fasta`
+
+The decoded message :  Congratulations to the 2021 CMDB @ JHU class!  Keep on looking for little green aliens...
 
 
