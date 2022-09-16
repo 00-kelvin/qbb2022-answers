@@ -22,7 +22,7 @@ In the 15x coverage simulation, 3 bp were not sequenced. The Poisson expectation
 
 ### Question 2: De novo assembly
 
-The bash script I wrote to find these answers is saved in `/asm/asm/exercise2.sh`; it worked when saved in the same directory as the fasta files (`~/qbb2022-answers/week1-homework/asm/asm`) and produced the following output: 
+The bash script I wrote to find these answers is saved in this directory under `/asm/asm/exercise2.sh`; it worked when saved in the same directory as the fasta files (`~/qbb2022-answers/week1-homework/asm/asm`) and produced the following output: 
 
 ```
 Question 2.1:
@@ -56,7 +56,7 @@ Since the total length is 234467, 50% of the genome is 117233.5 bp. The contigs 
 ```
 The first contig does not contain 50% of the genome, but the first 2 do (together they contain 153690 bp). Therefore, the N50 value is 47860.
 
-### Question 3: De novo assembly
+### Question 3: Whole Genome Alignment
 
 #### Question 3.1
 
