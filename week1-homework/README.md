@@ -22,7 +22,7 @@ In the 15x coverage simulation, 3 bp were not sequenced. The Poisson expectation
 
 ### Question 2: De novo assembly
 
-The bash script I wrote to find these answers is saved in /asm/asm/exercise2.sh; it worked when saved in the same directory as the fasta files (`~/qbb2022-answers/week1-homework/asm/asm`) and produced the following output: 
+The bash script I wrote to find these answers is saved in `/asm/asm/exercise2.sh`; it worked when saved in the same directory as the fasta files (`~/qbb2022-answers/week1-homework/asm/asm`) and produced the following output: 
 
 ```
 Question 2.1:
@@ -73,6 +73,7 @@ The output of
 
 was
 
+```
     [S1]     [E1]  |     [S2]     [E2]  |  [LEN 1]  [LEN 2]  |  [% IDY]  | [TAGS]
 =====================================================================================
   127965   233794  |        1   105830  |   105830   105830  |    99.99  | Halomonas	NODE_1_length_105830_cov_20.649193
@@ -80,6 +81,7 @@ was
        3    26789  |        1    26787  |    26787    26787  |   100.00  | Halomonas	NODE_3_length_41351_cov_20.528098
    26790    40641  |    27500    41351  |    13852    13852  |   100.00  | Halomonas	NODE_3_length_41351_cov_20.528098
    88532   127957  |        1    39426  |    39426    39426  |   100.00  | Halomonas	NODE_4_length_39426_cov_20.336388
+```
 
 It appears that the length of the longest alignment was 105830.
 
