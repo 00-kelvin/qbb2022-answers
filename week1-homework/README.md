@@ -9,3 +9,5 @@
 1 Mbp genome x 5x coverage = 5 Mbp of data
 
 5 Mbp / 100 bp reads = 50,000 reads
+
+For 15x coverage, 150,000 reads
