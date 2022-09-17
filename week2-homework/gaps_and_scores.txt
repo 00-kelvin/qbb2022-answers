@@ -1,0 +1,11 @@
+DNA Alignment: 
+
+Gaps in sequence 1: 46
+Gaps in sequence 2: 78
+Final alignment score: 266300.0
+
+AA Alignment:
+
+Gaps in sequence 1: 9
+Gaps in sequence 2: 0
+Final alignment score: 3801.0
