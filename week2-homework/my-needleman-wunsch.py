@@ -182,11 +182,13 @@ while i > 0 or j > 0:
 		# increment gap count
 		gaps_2 += 1
 
+# Write the alignment to a file
 file = open(sys.argv[4], 'w')
 file.write('Sequence 1 alignment: ' + align_1 + '\n' + '\n')
 file.write('Sequence 2 alignment: ' + align_2)
 file.close()
 
+# Print gap counts and alignment score
 print('Gaps in sequence 1: ' + str(gaps_1))
 print('Gaps in sequence 2: ' + str(gaps_2))
 print('Final alignment score: ' + str(align_score))
