@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+##USAGE: hw3.py <annotated_vcf_file> 
 
 import sys
 import matplotlib.pyplot as plt
@@ -85,16 +86,39 @@ for dp in dp_list:
 	except:
 		pass
 
-fig, ax = plt.subplots(nrows = 2, ncols = 2)
+##=================##
+## BUILD THE PLOTS ##
+##=================##
 
-# dps, dpcounts = np.unique(np.array(dp_list_clean), return_counts = True)
-# print(dps,dpcounts)
+fig, ax = plt.subplots(nrows = 2, ncols = 2, figsize=(12, 10))
+fig.suptitle("Variant genotype characteristics in 10 strains of S. cerevisiae",
+				fontsize = 18, y = 0.95, fontweight = 'bold')
 
-ax[0,0].hist(dp_list_clean, bins = 20)
+# read depths
+ax[0,0].hist(dp_list_clean, bins = 35, color = 'red', ec = 'pink')
 ax[0,0].set_yscale('log')
-ax[0,1].hist(gq_list_clean, bins = 20)
-ax[1,0].hist(af_list, bins = 10)
-ax[1,1].barh(eff_names, eff_counts, log = True)
+ax[0,0].set_xlabel('Read depth', fontweight = 'bold')
+ax[0,0].set_ylabel('Number of variants')
 
-plt.show()
+# genotype qualities
+ax[0,1].hist(gq_list_clean, bins = 16, color = 'orange', ec = 'yellow')
+ax[0,1].set_xlabel('Genotype quality', fontweight = 'bold')
+ax[0,1].set_ylabel('Number of variants')
+
+# allele frequencies
+ax[1,0].hist(af_list, bins = 10, color = 'green', ec = 'lightgreen')
+ax[1,0].set_xlabel('Allele frequency', fontweight = 'bold')
+ax[1,0].set_ylabel('Number of variants')
+
+# predicted effects
+plt.xticks(rotation=45, ha='right')
+
+ax[1,1].bar(eff_names, eff_counts, ec = 'lightblue')
+ax[1,1].set_yscale('log')
+ax[1,1].set_xlabel('Predicted effects', fontweight = 'bold')
+ax[1,1].set_ylabel('Number of variants')
+
+plt.subplots_adjust(bottom = 0.25, wspace = 0.25, hspace = 0.25)
+plt.savefig("plots.png", dpi=300)
+
 
