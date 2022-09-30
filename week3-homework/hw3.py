@@ -68,7 +68,7 @@ eff_list = [eff for eff in eff_list if eff]
 # create lists of the unique effect names and counts of each
 eff_names, eff_counts = np.unique(np.array(eff_list), return_counts = True)
 
-# change genotype qualities and read depts to floats and remove '.' entries
+# change genotype qualities floats and remove '.' entries
 gq_list_clean = []
 for gq in gq_list:
 	try:
@@ -112,7 +112,6 @@ ax[1,0].set_ylabel('Number of variants')
 
 # predicted effects
 plt.xticks(rotation=45, ha='right')
-
 ax[1,1].bar(eff_names, eff_counts, ec = 'lightblue')
 ax[1,1].set_yscale('log')
 ax[1,1].set_xlabel('Predicted effects', fontweight = 'bold')
