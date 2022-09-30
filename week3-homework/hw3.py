@@ -95,7 +95,8 @@ fig.suptitle("Variant genotype characteristics in 10 strains of S. cerevisiae",
 				fontsize = 18, y = 0.95, fontweight = 'bold')
 
 # read depths
-ax[0,0].hist(dp_list_clean, bins = 35, color = 'red', ec = 'pink')
+ax[0,0].hist(dp_list_clean, color = 'red', ec = 'pink', 
+				bins=np.arange(0, max(dp_list_clean) + 20, 20))
 ax[0,0].set_yscale('log')
 ax[0,0].set_xlabel('Read depth', fontweight = 'bold')
 ax[0,0].set_ylabel('Number of variants')
