@@ -118,6 +118,6 @@ ax[1,1].set_xlabel('Predicted effects', fontweight = 'bold')
 ax[1,1].set_ylabel('Number of variants')
 
 plt.subplots_adjust(bottom = 0.25, wspace = 0.25, hspace = 0.25)
-plt.savefig("plots.png", dpi=300)
+plt.savefig("plots.png", dpi=100)
 
 
