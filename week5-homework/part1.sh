@@ -46,3 +46,10 @@ bedtools intersect -wa -a D2_Klf4_peaks.bed -b D2_Sox2_peaks.bed | wc -l \
 echo "Percentage of overlapping peaks:" >> peak_counts.txt
 awk "BEGIN {print (41/60)*100}" >> peak_counts.txt
 
+# Step 5: Plot
+
+for BDG in D2_Klf4_treat D0_H3K27ac_treat D2_H3K27ac_treat callpeak-out/D2_Sox2_R1_treat_pileup
+do
+	python scale_bdg.py ${BDG}.bdg ${BDG}_scaled.bdg
+	awk '{ if ($2 < 35507055 && $3 > 35502055) print $0 }' ${BDG}_scaled.bdg > ${BDG}_cropped.bdg
+done
