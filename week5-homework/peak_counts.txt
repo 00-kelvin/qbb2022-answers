@@ -1,0 +1,8 @@
+Number of Sox2 peaks:
+     593
+Number of Klf4 peaks:
+      60
+Number of overlapping peaks:
+      41
+Percentage of overlapping peaks:
+68.3333
