@@ -24,3 +24,8 @@ then, after activating meme environment:
 
 ## Part 3
 
+```
+tomtom motif_databases/MOUSE/HOCOMOCOv11_full_MOUSE_mono_meme_format.meme memechip_out/combined.meme
+
+grep 'KLF4\|SOX2'  tomtom_out/tomtom.tsv > klf4_sox2_matches.txt
+```
