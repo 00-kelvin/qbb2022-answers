@@ -11,7 +11,9 @@
 
 According to the Hi-C manual, the following are considered invalid pairs:
 
-> Dangling end, i.e. unligated fragments (both reads mapped on the same restriction fragment)
-> Self circles, i.e. fragments ligated on themselves (both reads mapped on the same restriction fragment in inverted orientation
-> Religation, i.e. ligation of juxtaposed fragments
-> Dumped pairs, i.e. any pairs that do not match the filtering criteria on inserts size, restriction fragments size or for which we were not able to reconstruct the ligation product.
+> * Dangling end, i.e. unligated fragments (both reads mapped on the same restriction fragment)
+> * Self circles, i.e. fragments ligated on themselves (both reads mapped on the same restriction fragment in inverted orientation
+> * Religation, i.e. ligation of juxtaposed fragments
+> * Dumped pairs, i.e. any pairs that do not match the filtering criteria on inserts size, restriction fragments size or for which we were not able to reconstruct the ligation product.
+
+I am not sure what the majority of the invalid pairs would be, but I would guess that the dumped pairs make up a large fraction, as it seems like any of a number of missed criteria could result in a pair being dumped.
