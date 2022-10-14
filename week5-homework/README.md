@@ -15,12 +15,13 @@ Commands:
 sort -k 5,5rn D2_Sox2_peaks.bed | head -300 | awk '{ printf "%s:%i-%i\n", $1, $2, $3 }' > D2_Sox2_peaks_srtd.bed
 
 samtools faidx mm10.fa -r D2_Sox2_peaks_srtd.bed -o peak_sequences.fa
-
 ```
 
 then, after activating meme environment: 
 
-```meme-chip -maxw 7 peak_sequences.fa```
+```
+meme-chip -maxw 7 peak_sequences.fa
+```
 
 ## Part 3
 
