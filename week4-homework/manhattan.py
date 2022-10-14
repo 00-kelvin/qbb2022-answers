@@ -9,6 +9,12 @@ df_CB = pd.read_csv('CB1908_IC50_gwas_results.assoc.linear',
 df_GS = pd.read_csv('GS451_IC50_gwas_results.assoc.linear', 
 	delim_whitespace=True)
 
+# only care about actual genotypes not covariate p-values
+
+df_CB = df_CB[df_CB['TEST'] == 'ADD']
+df_GS = df_CB[df_CB['TEST'] == 'ADD']
+
+
 titles = ['CB1908 IC50 GWAS Results', 'GS451 IC50 GWAS Results']
 
 for i, df in enumerate([df_CB, df_GS]):
