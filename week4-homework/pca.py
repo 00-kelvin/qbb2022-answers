@@ -19,8 +19,10 @@ ax.scatter(pc_coord["PC1"], pc_coord["PC2"], label = "PC1 vs PC2")
 ax.set_xlabel("PC1")
 ax.set_ylabel("PC2")
 
+ax.set_title("Genetic relatedness between the cell lines")
+
 # save figure
-plt.savefig("pc1_vs_pc2.png")
+plt.savefig("pc1_vs_pc2.png", dpi=200)
 
 
 

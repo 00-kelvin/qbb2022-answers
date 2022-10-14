@@ -9,8 +9,11 @@ snp_af = np.genfromtxt("plink.frq",
 							skip_header = 1,
 							usecols = (4))
 
-print(snp_af[:20])
+fig, ax = plt.subplots()
 
-plt.hist(snp_af, bins = 50)
+ax.hist(snp_af, bins = 50)
+ax.set_xlabel("Allele frequency")
+ax.set_ylabel("Count")
+ax.set_title("Allele frequency spectrum")
 
-plt.savefig("af.png")
+plt.savefig("af.png", dpi=200)
