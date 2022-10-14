@@ -20,7 +20,7 @@ samtools faidx mm10.fa -r D2_Sox2_peaks_srtd.bed -o peak_sequences.fa
 
 then, after activating meme environment: 
 
-`meme-chip -maxw 7 peak_sequences.fa`
+```meme-chip -maxw 7 peak_sequences.fa```
 
 ## Part 3
 
