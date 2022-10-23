@@ -57,6 +57,6 @@ ax.set_xticklabels(['Homozygous ref', 'Heterozygous', 'Homozygous alt'])
 ax.set_ylabel('IC50')
 plt.title('Effect size of SNP ' + top_snp + ' on CB1908 IC50')
 
-plt.savefig('effect_size.png', dpi=150)
+plt.savefig('effect_size.png')
 
 print(top_snp)
