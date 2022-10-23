@@ -17,3 +17,9 @@ According to the Hi-C manual, the following are considered invalid pairs:
 > * Dumped pairs, i.e. any pairs that do not match the filtering criteria on inserts size, restriction fragments size or for which we were not able to reconstruct the ligation product.
 
 I am not sure what the majority of the invalid pairs would be, but I would guess that the dumped pairs make up a large fraction, as it seems like any of a number of missed criteria could result in a pair being dumped.
+
+## Part 2
+
+```
+./load_data.py analysis/hic_results/matrix/ddCTCF/iced/6400/ddCTCF_ontarget_6400_iced.matrix analysis/hic_results/matrix/dCTCF/iced/6400/dCTCF_ontarget_6400_iced.matrix analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed loaded_data.matrix
+```
