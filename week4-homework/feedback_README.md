@@ -8,3 +8,9 @@ This is a great start! You're well on your way to completing the assignment.
 Great work so far!
 
 (5/10)
+
+
+REGRADE:
+Awesome work. This is really well done. Don't worry about "stealing" other people's code. As long as you credit them, that's usually enough. Understanding what their code does is a nice bonus! Also, if you taught yourself `pandas`, that's really impressive. Excellently done.
+
+(10/10)
