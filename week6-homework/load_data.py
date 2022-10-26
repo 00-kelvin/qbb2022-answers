@@ -32,15 +32,17 @@ def main():
                                        (frags['start'] <= end) &
                                        (frags['end'] > end))[0][0]] - 1
 
-    # for the ddCTCF file
-
-    start_read = data1['F1'][numpy.where((data1['chr'] == chrom) &
-                                         (frags['start'] <= start) &
-                                         (frags['end'] > start))[0][0]]
-
     frags_fltrd = frags[start_bin:end_bin]
 
-    print(frags_fltrd)
+    # for the ddCTCF file
+
+    data1_fltrd = data1[numpy.where((data1['F1'] >= start_bin) &
+                            (data1['F2'] <= end_bin))]
+
+    # for the dCTCF file
+
+    data2_fltrd = data1[numpy.where((data1['F1'] >= start_bin) &
+                            (data1['F2'] <= end_bin))]
 
 if __name__ == "__main__":
     main()
