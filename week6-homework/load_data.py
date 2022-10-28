@@ -44,7 +44,7 @@ def main():
     start = 11170245
     end = 12070245
 
-    # print(data1)
+    # determine start and end bins
 
     start_bin = frags['bin'][np.where((frags['chr'] == chrom) &
                                          (frags['start'] <= start) &
@@ -53,12 +53,15 @@ def main():
                                        (frags['start'] <= end) &
                                        (frags['end'] > end))[0][0]] - 1
 
+    # dictionary for rescuing matrices from for loop
     d = {}
 
+    # titles for plots
     titles = ['ddCTCF', 'dCTCF', 'dCTCF - ddCTCF']
 
     fig, ax = plt.subplots(ncols = 3, figsize = (14, 2.8))
 
+    # for loop to make matrices and plots for ddCTCF and dCTCF
     for i, file in enumerate([data1, data2]):
 
         # filter any out of range data
@@ -67,6 +70,8 @@ def main():
         j = 1000
 
         for row in fltrd:
+
+            # log transform
             row[2] = np.log(row[2])
 
             # this is my bootleg way of finding the minimum score...
@@ -91,6 +96,7 @@ def main():
         #gives the maximum bin after the min bin has been subtracted out
         new_max = fltrd[len(fltrd) - 1][1]
 
+        # initialize my matrix
         mat = np.zeros((new_max + 1, new_max + 1))
 
         # for each row in the filtered/log tfmd/subtracted data file, set 
@@ -98,8 +104,6 @@ def main():
         for row in fltrd:
             mat[row[0], row[1]] = row[2]
             mat[row[1], row[0]] = row[2]
-
-        
 
         # set up my heatmap
         sns.heatmap(mat, ax=ax[i], vmin=0, vmax=10, cmap="magma_r", square=True,
@@ -112,12 +116,13 @@ def main():
         # remove distance dependent signal and smooth
         final_mat = smooth_matrix(remove_dd_bg(mat))
 
-        # save each of my edited matrices in a dictionary for later use
+        # save each of my edited matrices in my dictionary for later use
         d['mat{0}'.format(i + 1)] = final_mat
 
+    # create difference matrix
     dif_mat = d['mat2'] - d['mat1']
 
-
+    # add third heatmap
     sns.heatmap(dif_mat, ax=ax[2], cmap="seismic", square=True,
                 xticklabels=False, yticklabels=False, cbar_kws={"label": "Score"},
                 norm=colors.CenteredNorm())

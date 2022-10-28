@@ -8,21 +8,26 @@ import seaborn as sns
 
 mat_fname, out_fname = sys.argv[1:3]
 
+# load data
 mat_data = np.loadtxt(mat_fname, dtype=np.dtype([
     ('F1', int), ('F2', int), ('score', float)]))
 
+# start and end bins were provided, I don't see any reason to load the bin file
 start_bin = 54878
 end_bin = 54951
 
+# select the data within the desired bins
 fltrd = mat_data[np.where((mat_data['F1'] >= start_bin) & 
                             (mat_data['F2'] <= end_bin))]
 
 j = 1000
 
 for row in fltrd:
+
+    # log transform
     row[2] = np.log(row[2])
 
-    # this is my bootleg way of finding the minimum score...
+    # find minimum score
     if row[2] < j:
         j = row[2]
 
@@ -53,12 +58,13 @@ for row in fltrd:
     mat[row[1], row[0]] = row[2]
 
 fig, ax = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, figsize=(5,6.25))
-sns.heatmap(mat, ax=ax[0], vmin=0, vmax=10, cmap="magma_r", square=True,
-                xticklabels=False, yticklabels=False, cbar_kws={"label": "Score"})
 
+sns.heatmap(mat, ax=ax[0], vmin=0, vmax=10, cmap="magma_r", square=True,
+                xticklabels=False, yticklabels=False, cbar=False)
+
+ax[0].axis('off')
 ax[0].set_title('dCTCF Interactions')
-ax[0].set_xlabel('chr15:10400000-13400000')
-ax[0].set_ylabel('chr15:10400000-13400000')
+
 
 x = np.arange(5, new_max - 4)
 y = []
@@ -66,12 +72,15 @@ y = []
 for i in x:
     y.append(np.mean(mat[(i - 5):i, i:(i + 5)]))
 
-ax[0].axis('off')
+
 plt.margins(x=0)
 
 ax[1].plot(x,y)
 ax[1].set_xlim(0, new_max)
-ax[1].set_title('Insulation score')
+ax[1].set_xlabel('chr15:10400000-13400000')
+ax[1].set_title('Insulation Scores')
+ax[1].tick_params(bottom=False, labelbottom=False)
+
 plt.subplots_adjust(left=0.15,
                 bottom=0.1,
                 right=1.0,
