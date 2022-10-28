@@ -59,13 +59,14 @@ for row in fltrd:
 
 fig, ax = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, figsize=(5,6.25))
 
+# heatmap of dCTCF
 sns.heatmap(mat, ax=ax[0], vmin=0, vmax=10, cmap="magma_r", square=True,
                 xticklabels=False, yticklabels=False, cbar=False)
 
 ax[0].axis('off')
 ax[0].set_title('dCTCF Interactions')
 
-
+# setting x and y values for the insulation scores
 x = np.arange(5, new_max - 4)
 y = []
 
@@ -75,6 +76,7 @@ for i in x:
 
 plt.margins(x=0)
 
+# insulation score plot
 ax[1].plot(x,y)
 ax[1].set_xlim(0, new_max)
 ax[1].set_xlabel('chr15:10400000-13400000')
@@ -87,8 +89,6 @@ plt.subplots_adjust(left=0.15,
                 top=1.0,
                 wspace=0.4,
                 hspace=0.0)
-
-
 
 plt.tight_layout()
 plt.savefig(out_fname, dpi = 200)
