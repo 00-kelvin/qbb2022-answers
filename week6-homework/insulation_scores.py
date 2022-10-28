@@ -52,13 +52,34 @@ for row in fltrd:
     mat[row[0], row[1]] = row[2]
     mat[row[1], row[0]] = row[2]
 
-fig, ax = plt.subplots(nrows = 2, figsize = (5, 8))
+fig, ax = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, figsize=(5,6.25))
 sns.heatmap(mat, ax=ax[0], vmin=0, vmax=10, cmap="magma_r", square=True,
                 xticklabels=False, yticklabels=False, cbar_kws={"label": "Score"})
 
 ax[0].set_title('dCTCF Interactions')
 ax[0].set_xlabel('chr15:10400000-13400000')
 ax[0].set_ylabel('chr15:10400000-13400000')
+
+x = np.arange(5, new_max - 4)
+y = []
+
+for i in x:
+    y.append(np.mean(mat[(i - 5):i, i:(i + 5)]))
+
+ax[0].axis('off')
+plt.margins(x=0)
+
+ax[1].plot(x,y)
+ax[1].set_xlim(0, new_max)
+ax[1].set_title('Insulation score')
+plt.subplots_adjust(left=0.15,
+                bottom=0.1,
+                right=1.0,
+                top=1.0,
+                wspace=0.4,
+                hspace=0.0)
+
+
 
 plt.tight_layout()
 plt.savefig(out_fname, dpi = 200)

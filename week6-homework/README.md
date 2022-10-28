@@ -21,5 +21,11 @@ I am not sure what the majority of the invalid pairs would be, but I would guess
 ## Part 2
 
 ```
-./load_data.py analysis/hic_results/matrix/ddCTCF/iced/6400/ddCTCF_ontarget_6400_iced.matrix analysis/hic_results/matrix/dCTCF/iced/6400/dCTCF_ontarget_6400_iced.matrix analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed loaded_data.matrix
+./load_data.py analysis/hic_results/matrix/ddCTCF/iced/6400/ddCTCF_ontarget_6400_iced.matrix analysis/hic_results/matrix/dCTCF/iced/6400/dCTCF_ontarget_6400_iced.matrix analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed subsampled.png
+
+./load_data.py matrix/ddCTCF_full.6400.matrix matrix/dCTCF_full.6400.matrix matrix/6400_bins.bed full.png
 ```
+
+1. Yes, I am able to see the highlighted difference!
+2. Compared to the subsampled dataset, the full dataset had stronger interaction scores between most or all regions of the chromosome, and there appeared to be less extreme differences between the dCTCF and ddCTCF interaction profiles.
+3. The highlighted signal indicates the position of the CTCF site.
