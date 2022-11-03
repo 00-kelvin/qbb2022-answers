@@ -40,3 +40,6 @@ samtools cat -o h1_marked_reads.bam chr11_marked_reads_h1.bam chr14_marked_reads
 ```
 samtools cat -o h2_marked_reads.bam chr11_marked_reads_h2.bam chr14_marked_reads_h2.bam chr15_marked_reads_h2.bam chr20_marked_reads_h2.bam
 ```
+
+**Do you expect each region in H1 or H2 to correspond to the same parent of origin (i.e. the same haplotype)? Explain your reasoning.**
+
