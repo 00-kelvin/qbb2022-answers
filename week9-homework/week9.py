@@ -5,7 +5,7 @@ import numpy.lib.recfunctions as rfn
 
 ############################
 ##                        ##
-## 	0a: read in the data  ##
+##  0a: read in the data  ##
 ##                        ##
 ############################
 
@@ -22,7 +22,7 @@ fpkm_values = input_arr[col_names]
 
 ##############################
 ##                          ##
-## 	0b: process input data  ##
+##  0b: process input data  ##
 ##                          ##
 ##############################
 
