@@ -2,6 +2,7 @@
 
 import numpy as np
 import numpy.lib.recfunctions as rfn
+import scipy.cluster.hierarchy as sp
 
 ############################
 ##                        ##
@@ -37,4 +38,19 @@ row_names_fltrd = [row_names[i] for i in nonzero_ind]
 
 # log transform
 fpkm_fltrd_log = np.log2(fpkm_fltrd + 0.1)
+
+#####################
+##                 ##
+##  1: clustering  ##
+##                 ##
+#####################
+
+
+
+#######################################
+##                                   ##
+##  2. differential gene expression  ##
+##                                   ##
+#######################################
+
 
