@@ -4,9 +4,9 @@ import numpy as np
 import numpy.lib.recfunctions as rfn
 
 ############################
-##						  ##
+##                        ##
 ## 	0a: read in the data  ##
-##						  ##
+##                        ##
 ############################
 
 input_arr = np.genfromtxt("dros_gene_expression.csv", 
@@ -21,9 +21,9 @@ row_names = list(input_arr['t_name'])
 fpkm_values = input_arr[col_names]
 
 ##############################
-##						    ##
+##                          ##
 ## 	0b: process input data  ##
-##						    ##
+##                          ##
 ##############################
 
 fpkm_values_2d = rfn.structured_to_unstructured(fpkm_values, dtype=float)
