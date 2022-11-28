@@ -12,12 +12,11 @@
 
 5. python script for plotting
 
-* great script!
+* fantastic script!
 
 6. 4 panel plot of read pile ups
 
 * Nice use of the tick marks and tick mark labels so that we can see the different scales. Most would prefer using the same scale/max value for all four subplots.
-* you can use the [fill_between matplotlib function](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.fill_between.html) to fill in those curves if you want
 
 7. motif finding sort intersected sox2 replicate narrow peak by 5th columm, keep first 300 lines, awk command for reformatting (0.33 each)
 
@@ -29,4 +28,6 @@
 
 10. match profiles from tomtom for klf4 and sox2 (0.5 for commands, 0.5 for result)
 
-* I would expect there to be some SOX2 results, so I'm not sure why you're not seeing those. Your `grep` command is good
+Fantastic bash script for part 1! Cool use of awk to print the percent overlapping. Just as a note, you can add calling the python script to this
+
+Great notes in the README, especially about source for effective genome size
