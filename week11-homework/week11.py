@@ -31,6 +31,7 @@ sc.tl.pca(adata)
 sc.pl.pca(adata, na_color='blue', ax=ax[1], show=False)
 ax[1].set_box_aspect(1)
 ax[1].set_title('After filtering')
+
 plt.tight_layout()
 plt.savefig('pca_plots.png', dpi=150)
 
@@ -50,45 +51,35 @@ fig, ax = plt.subplots(ncols = 2, figsize=(10,5))
 
 # t-SNE
 sc.tl.tsne(adata)
-sc.pl.tsne(adata, ax=ax[0], show=False, color='leiden', legend_loc=None)
+sc.pl.tsne(adata, ax=ax[0], color='leiden', legend_loc=None, show=False)
 ax[0].set_box_aspect(1)
 ax[0].set_title('t-SNE plot')
 
 # UMAP
 sc.tl.umap(adata, maxiter=1000)
-sc.pl.umap(adata, ax=ax[1], show=False, color='leiden')
+sc.pl.umap(adata, ax=ax[1], color='leiden', show=False)
 ax[1].set_box_aspect(1)
 ax[1].set_title('UMAP plot')
 
-# save figure
 plt.tight_layout()
 plt.savefig('tsne_umap.png', dpi=150)
 
+############
+## STEP 3 ##
+############
 
+# t-test method
+fig, ax = plt.subplots()
+sc.tl.rank_genes_groups(adata, groupby='leiden', method='t-test')
+sc.pl.rank_genes_groups(adata, ax=ax, show=False)
+ax.set_title('Distinguising genes using t-test')
+plt.savefig('t-test_groups.png')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# logistic regression method
+fig, ax = plt.subplots()
+sc.tl.rank_genes_groups(adata, groupby='leiden', method='logreg')
+sc.pl.rank_genes_groups(adata, ax=ax, show=False)
+ax.set_title('Distinguising genes using logistic regression')
+plt.savefig('logreg_groups.png')
 
 
