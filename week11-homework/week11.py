@@ -82,4 +82,50 @@ sc.pl.rank_genes_groups(adata, ax=ax, show=False)
 ax.set_title('Distinguising genes using logistic regression')
 plt.savefig('logreg_groups.png')
 
+############
+## STEP 4 ##
+############
+
+# These are the marker genes I decided on...
+marker_genes_dict = {
+    'EC2': ['Tac2'],
+    'OL': ['Olig1'],
+    'PC': ['Rgs5', 'Cox4i2'],
+    'MG': ['C1qc', 'Skap2', 'Tyrobp'],
+    'EC3': ['Hbb-bt'],
+    'FB1': ['Tshz1']
+}
+
+# Making some support t-SNE plots
+genelist = ['Tac2', 'Cox4i2', 'Olig1', 'Rgs5', 'C1qc', 'Skap2',
+    'Tyrobp', 'Hbb-bt', 'Tshz1']
+
+for i in range(0, len(genelist)):
+    sc.pl.tsne(adata, color=genelist[i], 
+                save='_{}.png'.format(genelist[i]), show=False)
+
+# Support dotplot
+sc.pl.dotplot(adata, marker_genes_dict, 'leiden', 
+                dendrogram=True, save=True, show=False)
+
+# Create a dictionary to map cluster to annotation label
+cluster2annotation = {
+     '20': 'EC2',
+     '21': 'OL',
+     '25': 'PC',
+     '26': 'MG',
+     '16': 'EC3',
+     '19': 'FB1'
+}
+
+# Add a new '.obs' column called 'cell type'
+adata.obs['cell type'] = adata.obs['leiden'].map(cluster2annotation).astype('category')
+
+# UMAP of my cell types 
+sc.pl.umap(adata, color='cell type', legend_loc='on data',
+           frameon=False, legend_fontsize=10, legend_fontoutline=2, 
+           save='cell_types.png', show=False)
+
+
+
 
