@@ -12,7 +12,7 @@ for KRAKEN in 83 86 88 89 90 93 94 97; do ./parse_kraken.py ./metagenomics_data/
 
 ### Step 1C. 
 
-Rank ktImportText on the samples
+Rank ```ktImportText``` on the samples
 
 ```
 ktImportText -q *_krona.txt
@@ -101,3 +101,17 @@ Prokaryotic genomes tend to be 0.6 to 8.0 Mb; these values are all within that r
 
 **QUESTION 3D**
 ?? 
+
+## Step 3. 
+
+Made lists of contigs for each bin (have to cut out the ">" so it can be used to ```grep``` in the assembly.kraken):
+
+```
+for BIN in 1 2 3 4 5 6; do grep ">" bins_dir/bin.${BIN}.fa | cut -c 2- > ./contig_lists/bin${BIN}.txt; done
+```
+then search for those contigs in the assembly.kraken and save all the matches to a file, then collapse to unique matches for each (with counts):
+
+```
+for BIN in 1 2 3 4 5 6; do grep -f contig_lists/bin${BIN}.txt ./KRAKEN/assembly.kraken | cut -f 2 | sort | uniq -c > ./taxonomies/bin${BIN}.txt; done
+```
+
