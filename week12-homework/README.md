@@ -25,6 +25,7 @@ Throughout the first week, _Enterococcus faecalis_ is the most prevalent group o
 ## Step 2.
 
 **QUESTION 2**
+
 ??
 
 ### Step 2A.
@@ -51,9 +52,11 @@ metabat2 -i assembly.fasta -a depth.txt -o bins_dir/bin
 ```
 
 **QUESTION 3A**
+
 I got 6 bins
 
 **QUESTION 3B**
+
 There are 197 contigs in the 6 bin files: 
 
 ```
