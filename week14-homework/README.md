@@ -26,7 +26,7 @@ Throughout the first week, _Enterococcus faecalis_ is the most prevalent group o
 
 **QUESTION 2**
 
-??
+We could use amount of coverage per contig, codon usage, GC content/nucleotide frequency, and relative abundance over a time series to group them.
 
 ### Step 2A.
 
@@ -103,7 +103,8 @@ for BIN in bins_dir/*; do grep -v ">" ${BIN} | wc -m; done
 Prokaryotic genomes tend to be 0.6 to 8.0 Mb; these values are all within that range, so they seem reasonable.
 
 **QUESTION 3D**
-?? 
+
+Once we have a guess of what species each bin corresponds to, we could align the bins to existing genomes for those species and compare to figure out what contaminations there are and what parts are missing.
 
 ## Step 3. 
 
@@ -117,4 +118,26 @@ then search for those contigs in the assembly.kraken and save all the matches to
 ```
 for BIN in 1 2 3 4 5 6; do grep -f contig_lists/bin${BIN}.txt ./KRAKEN/assembly.kraken | cut -f 2 | sort | uniq -c > ./taxonomies/bin${BIN}.txt; done
 ```
+
+From these results I chose the most frequent hit as my prediction (used ```wc -l``` to find total number of contigs in each bin for the proportions reported below).
+
+**QUESTION 4A**
+
+Predictions for each bin:
+
+* **Bin 1:** 49/55 root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Bacillales;Staphylococcaceae;Staphylococcus;Staphylococcus aureus;Staphylococcus aureus subsp. aureus;Staphylococcus aureus subsp. aureus ST72;Staphylococcus aureus subsp. aureus CN1
+	* All the contigs (55/55) fall under the same hierarchies up to _Staphylococcus aureus subsp. aureus_, so we can say Bin 1 is _Staphylococcus aureus subsp. aureus_ with high confidence
+* **Bin 2:** (51/78) root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Bacillales;Staphylococcaceae;Staphylococcus;Staphylococcus epidermidis;Staphylococcus epidermidis RP62A
+	* Nearly all contigs (77/78) == _Staphylococcus epidermidis_, the only other 1 is _Staphylococcus aureus_, so we can predict with high confidence that Bin 2 corresponds to _Staphylococcus epidermidis_ and with even higher confidence that it it is part of the _Staphylococcus_ genus
+* **Bin 3:** (3/8) root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Tissierellia;Tissierellales;Peptoniphilaceae;Anaerococcus;Anaerococcus prevotii;Anaerococcus prevotii DSM 20548
+	* Since there are only 8 contigs in this bin, and they are somewhat spread out, the only prediction we can make with high confidence is that Bin 3 corresponds to a species in the _Firmicutes_ phylum
+* **Bin 4:** (24/37) root;cellular organisms;Bacteria;Terrabacteria group;Firmicutes;Bacilli;Bacillales;Staphylococcaceae;Staphylococcus;Staphylococcus haemolyticus;Staphylococcus haemolyticus JCSC1435
+	* The rest of the contigs that do not belong to this species are other _Staphylococcus_ bacteria, but not _Staphylococcus haemolyticus_
+* **Bin 5:** (13/13) root;cellular organisms;Bacteria;Terrabacteria group;Actinobacteria;Actinobacteria;Propionibacteriales;Propionibacteriaceae;Cutibacterium;Cutibacterium avidum;Cutibacterium avidum 44067
+	* All contigs agree!
+* **Bin 6:** all 6 belong to species _Enterococcus faecalis_, two strains have 2 hits each: OG1RF and V583.
+
+**QUESTION 4B**
+
+We could more robustly infer the taxonomy by
 
