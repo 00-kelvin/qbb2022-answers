@@ -139,5 +139,5 @@ Predictions for each bin:
 
 **QUESTION 4B**
 
-We could more robustly infer the taxonomy by
+We could more robustly infer the taxonomy by calculating some measure of significance of the match, such as an e-value. 
 
