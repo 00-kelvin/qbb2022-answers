@@ -141,9 +141,9 @@ def fixation_time_vs_allele_freq(p_values, runs, N):
 	plt.savefig("fixation_time_vs_allele_freq.png", dpi=200)
 
 def main():
-	# allele_freq_vs_gen_number(0.3, 100)
-	# time_to_fixation_histogram(1000)
-	# fixation_time_vs_pop_size([100,1000,10000,100000,1000000,10000000])
+	allele_freq_vs_gen_number(0.7, 500)
+	time_to_fixation_histogram(1000)
+	fixation_time_vs_pop_size([100,1000,10000,100000,1000000,10000000])
 	fixation_time_vs_allele_freq(np.arange(0, 1.1, 0.1), 100, 1000)
 
 
