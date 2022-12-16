@@ -1,6 +1,6 @@
 # Week 8 -- 10 points possible
 
-_ + _ + _ + _ + _ + _ + _ + _ + _ + _ = _ points out of 10 possible
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 10 points out of 10 possible
 
 1. call and phase variants with `medaka_variant` for 2/4 regions (0.5 pts each)
 
